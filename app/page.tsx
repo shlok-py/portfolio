@@ -22,7 +22,7 @@ export default function Home() {
     <main className="md:w-screen md:min-h-screen bg-gradient-to-r from-red-100 to-purple-100 via-blue-100 bg-size-200 animate-gradient-move md:flex md:justify-center md:items-center flex flex-col items-center min-h-screen overflow-y-auto">
 
       {/* <div className= {`${isMobile() ? 'block' : 'hidden md:flex'}`}> */}
-      <div className="h-1/2 w-full flex flex-col justify-center items-start px-10 md:w-full md:h-full md:flex md:flex-col md:fixed md:inset-x-0 md:left-[40%] my-[10rem] md:my-0">
+      <div className="h-1/2 w-full flex flex-col justify-center items-start px-10 md:w-full md:h-full md:flex md:flex-col md:fixed md:inset-x-0 md:left-[40%] my-[10rem] z-[1100000000000] md:my-0">
           <h1 className={`${bodyFont.className} text-black font-bold text-3xl`}>Shlok Koirala,</h1>
           <span className={`${bodyFont.className} text-black font-bold md:text-3xl text-2xl mt-1`}>
               your <span className="inline-block bg-gradient-to-tr from-purple-700 to-pink-400 bg-clip-text text-transparent">CUTEST AI/ML</span>  developer
@@ -45,7 +45,7 @@ export default function Home() {
         </div>
 
         <div className="md:w-full md:flex md:flex-col md:absolute md:left-[-30%] my-[5rem] md:my-0">
-        <nav className="md:w-full md:h-full md:flex md:justify-center">
+        <nav className="md:w-auto md:h-full md:flex md:justify-center">
           <ul className={`${titleFont.className} md:flex md:flex-col md:pr-5 md:pl-5 md:w-auto w-screen flex flex-col items-around px-10`}>
             <li >
               <a href="https://huggingface.co/spaces/shlok123/imageColorization" target="_blank" className="text-black p-5 font-thin flex justify-between items-center rounded-3xl hover:bg-white/30 hover:backdrop-blur-lg hover:shadow-xl transition duration-300 ease-in-out">
@@ -61,11 +61,7 @@ export default function Home() {
               <a href="#" className="p-5 text-black flex font-thin justify-between items-center hover:bg-white/30 hover:backdrop-blur-lg hover:shadow-xl transition duration-300 ease-in-out rounded-3xl">
               Satelite Image Segmentation <span className="text-[#92989F]  pl-9">2023</span>
               </a>
-            </li>
-
-            
-
-        
+            </li> 
           </ul>
         </nav>
       </div>
