@@ -41,7 +41,13 @@ export default function Home() {
           <a href="https://x.com/koirala_shlok" target="_blank">
           <span className={`${titleFont.className} md:text-md text-sm  text-[#92989F] font-thin pr-5`}>X</span>
           </a>
+
+          <a href="mailto:shlokkoirala23@gmail.com" target="_blank">
+          <span className={`${titleFont.className} md:text-md text-sm  text-[#fffff] shadow-xl bg-gradient-to-tr from-purple-400 to-pink-400 font-thin px-5 py-2 rounded-full hover:bg-gradient-to-tl hover:from-purple-400 hover:to-pink-400 transition duration-300 ease-in-out`}>HireMe</span>
+          </a>
           </span>
+          
+          
         </div>
 
         <div className="md:w-full md:flex md:flex-col md:absolute md:left-[-30%] my-[5rem] md:my-0">
@@ -61,7 +67,7 @@ export default function Home() {
               <a href="#" className="p-5 text-black flex font-thin justify-between items-center hover:bg-white/30 hover:backdrop-blur-lg hover:shadow-xl transition duration-300 ease-in-out rounded-3xl">
               Satelite Image Segmentation <span className="text-[#92989F]  pl-9">2023</span>
               </a>
-            </li> 
+            </li>
           </ul>
         </nav>
       </div>
