@@ -3,11 +3,11 @@ import exp from "constants";
 import { Rubik, Afacad } from "next/font/google";
 import Image from "next/image";
 
-export const titleFont = Rubik({
+const titleFont = Rubik({
   subsets: ['latin'],
   weight: 'variable',
 });
-export const bodyFont = Afacad({
+const bodyFont = Afacad({
   subsets: ['latin'],
   weight: 'variable',
 });

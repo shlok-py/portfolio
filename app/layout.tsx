@@ -13,6 +13,8 @@ const geistMono = localFont({
   weight: "100 900",
 });
 
+
+
 export const metadata: Metadata = {
   title: "Shlok Koirala",
   description: "Created by Shlok Koirala",
