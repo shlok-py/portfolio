@@ -28,7 +28,7 @@ export default function Home() {
               your <span className="inline-block bg-gradient-to-tr from-purple-700 to-pink-400 bg-clip-text text-transparent">CUTEST AI/ML</span>  developer
           </span>
           <span className="flex pt-3">
-          <a href="#" target="_blank"><span className={`${titleFont.className} md:text-md text-sm text-[#92989F] font-thin pr-5`}>About</span></a>
+          <a href="https://read.cv/shlok_" target="_blank"><span className={`${titleFont.className} md:text-md text-sm text-[#92989F] font-thin pr-5`}>About</span></a>
           
           <a href="https://www.linkedin.com/in/shlok-koirala-2aabb51b6/" target="_blank">
           <span className={`${titleFont.className} font-thin md:text-md text-sm  text-[#92989F] pr-5`}>LinkedIn</span>
