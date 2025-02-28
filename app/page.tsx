@@ -59,8 +59,8 @@ export default function Home() {
               </a>
             </li>
             <li>
-              <a href="#" className="text-black p-5 flex font-thin justify-between items-center hover:bg-white/30 hover:backdrop-blur-lg hover:shadow-xl transition duration-300 ease-in-out rounded-3xl">
-              Text Classification <span className="text-[#92989F]  pl-9">2023</span>
+              <a href="https://huggingface.co/spaces/shlok123/nepalinewsclassification" className="text-black p-5 flex font-thin justify-between items-center hover:bg-white/30 hover:backdrop-blur-lg hover:shadow-xl transition duration-300 ease-in-out rounded-3xl">
+              Nepali News Classification <span className="text-[#92989F]  pl-9">2023</span>
               </a>
             </li>
             <li >
