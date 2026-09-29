@@ -21,7 +21,7 @@ export function TerminalConsole({ fullScreen = false }: { fullScreen?: boolean }
         <ul className="list-none ml-2 mt-2 space-y-1">
           <li><span className="text-primary w-20 inline-block">skills</span> - Display technical skills</li>
           <li><span className="text-primary w-20 inline-block">contact</span> - Show contact information</li>
-          <li><span className="text-primary w-20 inline-block">blogs</span> - Open the blog in a new tab</li>
+          <li><span className="text-primary w-20 inline-block">blogs</span> - Open Medium in a new tab</li>
           <li><span className="text-primary w-20 inline-block">clear</span> - Clear the terminal output</li>
         </ul>
       </div>
@@ -41,7 +41,7 @@ export function TerminalConsole({ fullScreen = false }: { fullScreen?: boolean }
         <p>GitHub: <a href="https://github.com/shlok-py" target="_blank" rel="noreferrer" className="text-primary hover:underline">github.com/shlok-py</a></p>
       </div>
     ),
-    blogs: <span className="text-secondary mt-2 block">Opening the blog in a new tab...</span>,
+    blogs: <span className="text-secondary mt-2 block">Opening Medium in a new tab...</span>,
   };
 
   const handleCommand = (e: React.KeyboardEvent<HTMLInputElement>) => {
@@ -53,7 +53,7 @@ export function TerminalConsole({ fullScreen = false }: { fullScreen?: boolean }
         setHistory([]);
       } else {
         if (cmd === "blogs") {
-          window.open("/blog", "_blank", "noopener,noreferrer");
+          window.open("https://medium.com/@shlokkoirala19", "_blank", "noopener,noreferrer");
         }
         const output = commands[cmd] || (
           <span className="text-red-400 mt-2 block">Command not found: {cmd}. Type 'help' for a list of commands.</span>

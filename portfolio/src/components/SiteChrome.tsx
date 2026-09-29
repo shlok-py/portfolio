@@ -8,8 +8,7 @@ export function SiteChrome({ children }: { children: React.ReactNode }) {
   const pathname = usePathname();
   const searchParams = useSearchParams();
   const modeParam = searchParams.get("mode");
-  const isPublicUserPage =
-    pathname === "/blog" || pathname.startsWith("/blog/") || pathname === "/contact";
+  const isPublicUserPage = pathname === "/contact";
   const mode =
     modeParam === "dev" || modeParam === "user"
       ? modeParam

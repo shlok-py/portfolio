@@ -6,16 +6,18 @@ import { motion, AnimatePresence } from "framer-motion";
 import { useState } from "react";
 import { Menu, X } from "lucide-react";
 
+const MEDIUM_URL = "https://medium.com/@shlokkoirala19";
+
 export function Navbar({ hasModeSwitcher = false }: { hasModeSwitcher?: boolean }) {
   const pathname = usePathname();
   const [mobileOpen, setMobileOpen] = useState(false);
 
   const modeQuery = hasModeSwitcher ? "?mode=user" : "";
   const links = [
-    { name: "Home", href: "/" },
-    { name: "Blog", href: "/blog" },
-    { name: "Contact", href: "/contact" },
-  ].map((link) => ({ ...link, href: `${link.href}${modeQuery}` }));
+    { name: "Home", href: `/${modeQuery}`, external: false },
+    { name: "Blog", href: MEDIUM_URL, external: true },
+    { name: "Contact", href: `/contact${modeQuery}`, external: false },
+  ];
 
   const isActive = (href: string) =>
     href === "/" ? pathname === "/" : pathname.startsWith(href);
@@ -51,6 +53,8 @@ export function Navbar({ hasModeSwitcher = false }: { hasModeSwitcher?: boolean 
               <Link
                 key={link.name}
                 href={link.href}
+                target={link.external ? "_blank" : undefined}
+                rel={link.external ? "noreferrer" : undefined}
                 className="font-mono text-sm relative transition-colors"
                 style={{
                   color: isActive(link.href)
@@ -107,6 +111,8 @@ export function Navbar({ hasModeSwitcher = false }: { hasModeSwitcher?: boolean 
                 <Link
                   key={link.name}
                   href={link.href}
+                  target={link.external ? "_blank" : undefined}
+                  rel={link.external ? "noreferrer" : undefined}
                   onClick={() => setMobileOpen(false)}
                   className="font-mono text-sm px-4 py-3 rounded-lg transition-colors"
                   style={{
