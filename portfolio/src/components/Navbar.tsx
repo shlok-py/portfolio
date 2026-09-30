@@ -5,18 +5,20 @@ import { usePathname } from "next/navigation";
 import { motion, AnimatePresence } from "framer-motion";
 import { useState } from "react";
 import { Menu, X } from "lucide-react";
+import messages from "@/i18n/en.json";
 
 const MEDIUM_URL = "https://medium.com/@shlokkoirala19";
 
 export function Navbar({ hasModeSwitcher = false }: { hasModeSwitcher?: boolean }) {
+  const copy = messages.navigation;
   const pathname = usePathname();
   const [mobileOpen, setMobileOpen] = useState(false);
 
   const modeQuery = hasModeSwitcher ? "?mode=user" : "";
   const links = [
-    { name: "Home", href: `/${modeQuery}`, external: false },
-    { name: "Blog", href: MEDIUM_URL, external: true },
-    { name: "Contact", href: `/contact${modeQuery}`, external: false },
+    { name: copy.home, href: `/${modeQuery}`, external: false },
+    { name: copy.blog, href: MEDIUM_URL, external: true },
+    { name: copy.contact, href: `/contact${modeQuery}`, external: false },
   ];
 
   const isActive = (href: string) =>
@@ -83,7 +85,7 @@ export function Navbar({ hasModeSwitcher = false }: { hasModeSwitcher?: boolean 
               className="flex md:hidden items-center justify-center w-10 h-10 rounded-lg transition-colors"
               style={{ color: "var(--text-body)" }}
               onClick={() => setMobileOpen((prev) => !prev)}
-              aria-label="Toggle menu"
+              aria-label={mobileOpen ? copy.closeMenu : copy.openMenu}
             >
               {mobileOpen ? <X size={22} /> : <Menu size={22} />}
             </button>

@@ -1,0 +1,213 @@
+{
+  "meta": {
+    "title": "AI systems portfolio",
+    "description": "A field log of intelligent systems, interfaces, and experiments built after dark."
+  },
+  "landing": {
+    "signal": "Signal detected / portfolio online",
+    "titleLead": "Enter the",
+    "titleAccent": "unknown.",
+    "description": "A quiet archive of systems, experiments, and things built after dark.",
+    "devMode": "Dev mode",
+    "devDetail": "Inspect the machinery",
+    "userMode": "User mode",
+    "userDetail": "Walk through the work",
+    "choose": "Choose your perspective"
+  },
+  "navigation": {
+    "home": "Home",
+    "blog": "Writing",
+    "contact": "Contact",
+    "openMenu": "Open navigation",
+    "closeMenu": "Close navigation",
+    "switchToLight": "Switch to light mode",
+    "switchToDark": "Switch to dark mode",
+    "dev": "dev",
+    "user": "user"
+  },
+  "hero": {
+    "titleLead": "I build systems that",
+    "titleAccent": "keep thinking",
+    "titleEnd": "survive contact with reality.",
+    "description": "AI engineer building production ML systems, multilingual NLP tools, and agentic workflows for problems that do not fit neatly into a demo.",
+    "projects": "Trace the systems",
+    "resume": "Open the field notes"
+  },
+  "domains": {
+    "headingLead": "What I",
+    "headingAccent": "work with",
+    "items": [
+      {
+        "title": "Retrieval & Agents",
+        "description": "RAG systems, multi-agent workflows, evaluation loops, and the control layers that keep them useful in production."
+      },
+      {
+        "title": "ML Systems & Operations",
+        "description": "FastAPI services, LLMOps pipelines, Azure deployments, integrations, and the infrastructure between model and user."
+      },
+      {
+        "title": "Language & Heritage",
+        "description": "Nepali and Sanskrit NLP, Devanagari processing, computer vision, and models built for low-resource contexts."
+      }
+    ]
+  },
+  "projects": {
+    "headingLead": "Project",
+    "headingAccent": "tour",
+    "eyebrow": "A guided walk through the work",
+    "previous": "Previous project",
+    "next": "Next project",
+    "step": "Project {current} of {total}",
+    "impact": "Observed impact",
+    "repository": "Open repository",
+    "external": "Open project",
+    "items": [
+      {
+        "title": "Sanjyaan",
+        "type": "AI learning assistant / Hackedemia 2.0 title winner",
+        "description": "An AI-powered educational platform for students with dysgraphia and dyscalculia, with personalized workflows adapted to Nepali educational contexts.",
+        "metrics": ["Title winner, 100+ teams", "Adaptive content delivery", "Real-time feedback"],
+        "tech": ["Python", "LLMs", "FastAPI", "React"],
+        "image": "/images/projects/sanjyaan.webp",
+        "github": "#",
+        "link": "#"
+      },
+      {
+        "title": "Shades of History",
+        "type": "Heritage restoration / published research",
+        "description": "Generative image restoration and deep colorization for degraded Nepalese heritage photographs, with a live Hugging Face demo.",
+        "metrics": ["Journal of NAST College, 2025", "Live Hugging Face deployment", "GAN + super-resolution"],
+        "tech": ["PyTorch", "GANs", "Image colorization", "Hugging Face Spaces"],
+        "image": "/images/projects/shades-of-history.webp",
+        "github": "#",
+        "link": "https://huggingface.co/spaces/shlok123/ImageColorization"
+      },
+      {
+        "title": "Abstractive QA",
+        "type": "Low-resource multilingual NLP",
+        "description": "A Nepali question-answering system fine-tuned on MuRIL-large, with a full span-extraction pipeline and custom SQuAD evaluation logic.",
+        "metrics": ["Nepali / Hindi / English", "MuRIL-large fine-tuning", "GPU-efficient fp16 training"],
+        "tech": ["PyTorch", "Transformers", "MuRIL-large", "SQuAD"],
+        "image": "/images/projects/abstractive-qa.webp",
+        "github": "#",
+        "link": "#"
+      },
+      {
+        "title": "ChandaParser",
+        "type": "Computational Sanskrit and Nepali",
+        "description": "A Devanagari-aware prosody engine for identifying classical poetic meters through custom syllabification, Chandahashastra rules, and fuzzy matching.",
+        "metrics": ["20+ classical meters", "8 Ganas implemented", "Zero NLP library dependency"],
+        "tech": ["Python", "Unicode", "Devanagari", "Levenshtein matching"],
+        "image": "/images/projects/chandaparser.webp",
+        "github": "#",
+        "link": "#"
+      }
+    ]
+  },
+  "experience": {
+    "eyebrow": "Professional record",
+    "headingLead": "Where the",
+    "headingAccent": "systems lived",
+    "previous": "Previous role",
+    "next": "Next role",
+    "step": "Role {current} of {total}",
+    "items": [
+      {
+        "role": "Software Engineer / Software Developer (AI/ML)",
+        "company": "Ycotek / Denzing",
+        "period": "May 2026 - Present",
+        "description": "Architecting data visualization automation for business decision flows and an autonomous stock replacement and replenishment agent with human-in-the-loop control.",
+        "skills": ["Autonomous agents", "HITL systems", "Data visualization automation"]
+      },
+      {
+        "role": "Data Scientist / AI Engineer",
+        "company": "Perceive Now Inc. / Remote",
+        "period": "May 2025 - Apr 2026",
+        "description": "Built production RAG and multi-agent market research systems across Healthcare, CPG, Supply Chain, and Construction, reducing manual research effort by 80% and processing time by 30%.",
+        "skills": ["LangChain", "ChromaDB", "OpenAI API", "Azure", "20+ integrations"]
+      },
+      {
+        "role": "AI Engineer Intern",
+        "company": "Symbiosis Solutions",
+        "period": "Jan 2025 - Apr 2025",
+        "description": "Designed a CV analysis and scoring engine using NLP and ML classification that automated 30% of recruitment screening, alongside production-readiness experiments.",
+        "skills": ["NLP", "ML classification", "Model benchmarking"]
+      },
+      {
+        "role": "Research Fellow",
+        "company": "AISSR Lab, Kathmandu University",
+        "period": "Jan 2024 - Dec 2024",
+        "description": "Led applied AI research across generative AI, computer vision, heritage conservation, and human-wildlife conflict resolution; co-authored research published in 2025.",
+        "skills": ["Generative AI", "Computer vision", "Research collaboration"]
+      },
+      {
+        "role": "Student Partner",
+        "company": "Leapfrog Technology",
+        "period": "Apr 2023 - Dec 2023",
+        "description": "Built a RAG question-answering system for the Constitution of Nepal and contributed to the Merojob platform revamp across frontend and backend work.",
+        "skills": ["LangChain", "Pinecone", "Llama CPP", "React"]
+      }
+    ]
+  },
+  "footer": {
+    "heading": "Leave a trace",
+    "description": "Available for advanced engineering roles and technical collaborations from late 2026 onward.",
+    "copyright": "AI systems portfolio. Designed for production, left slightly uncanny."
+  },
+  "terminal": {
+    "title": "visitor@research-console:~",
+    "commandNames": {
+      "help": "help",
+      "skills": "skills",
+      "contact": "contact",
+      "writing": "writing",
+      "clear": "clear"
+    },
+    "welcome": "Welcome to the interactive system console v1.0.0",
+    "promptHint": "Type",
+    "helpCommand": "help",
+    "available": "Available commands:",
+    "commands": {
+      "skills": "Display technical skills",
+      "contact": "Show contact information",
+      "writing": "Open the writing archive in a new tab",
+      "clear": "Clear the terminal output"
+    },
+    "skills": {
+      "ai": "AI/ML",
+      "aiValue": "PyTorch, RAG, multi-agent systems, LangChain, fine-tuning",
+      "backend": "Backend",
+      "backendValue": "FastAPI, Python, Node.js, Next.js",
+      "cloud": "Cloud/DevOps",
+      "cloudValue": "Azure App Services, Docker, CI/CD, LLMOps pipelines",
+      "vision": "Vision & language",
+      "visionValue": "Computer vision, recommendation systems, NLP pipelines, embeddings, evaluation"
+    },
+    "contact": {
+      "email": "Email",
+      "linkedin": "LinkedIn",
+      "github": "GitHub"
+    },
+    "writingOpened": "Opening the writing archive in a new tab...",
+    "notFound": "Unknown command: {command}. Type 'help' to inspect the console.",
+    "clear": "clear"
+  },
+  "contact": {
+    "titleLead": "Leave a",
+    "titleAccent": "signal",
+    "description": "For research, systems work, or a conversation that starts with a difficult question.",
+    "formTitle": "Transmit a message",
+    "name": "Name",
+    "email": "Email",
+    "message": "Message",
+    "namePlaceholder": "Your name",
+    "emailPlaceholder": "you@example.com",
+    "messagePlaceholder": "What should we investigate?",
+    "send": "Send message",
+    "sending": "Sending...",
+    "successTitle": "Message received",
+    "successDescription": "The signal arrived. A reply will follow when the channel is clear.",
+    "sendAnother": "Send another message",
+    "errorFallback": "The message could not be transmitted. Please try again."
+  }
+}

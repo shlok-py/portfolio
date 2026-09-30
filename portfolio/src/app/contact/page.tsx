@@ -2,8 +2,10 @@
 
 import { useState } from "react";
 import { Mail, Send, Loader2 } from "lucide-react";
+import messages from "@/i18n/en.json";
 
 export default function Contact() {
+  const copy = messages.contact;
   const [formData, setFormData] = useState({ name: "", email: "", message: "" });
   const [status, setStatus] = useState<"idle" | "loading" | "success" | "error">("idle");
   const [errorMessage, setErrorMessage] = useState("");
@@ -27,49 +29,52 @@ export default function Contact() {
 
       setStatus("success");
       setFormData({ name: "", email: "", message: "" });
-    } catch (error: any) {
+    } catch (error: unknown) {
       setStatus("error");
-      setErrorMessage(error.message || "An unexpected error occurred");
+      setErrorMessage(error instanceof Error ? error.message : copy.errorFallback);
     }
   };
 
   return (
-    <div className="max-w-4xl mx-auto px-6 py-20">
+    <main className="relative min-h-screen overflow-hidden px-6 py-20" style={{ background: "radial-gradient(circle at 70% 20%, rgba(74, 38, 82, 0.18), transparent 34%), radial-gradient(circle at 20% 70%, rgba(24, 83, 91, 0.16), transparent 34%), #050811" }}>
+      <div className="pointer-events-none absolute inset-0 opacity-30" style={{ backgroundImage: "linear-gradient(rgba(137, 196, 198, 0.045) 1px, transparent 1px), linear-gradient(90deg, rgba(137, 196, 198, 0.045) 1px, transparent 1px)", backgroundSize: "72px 72px" }} />
+      <div className="relative mx-auto max-w-4xl">
       <div className="mb-16 text-center">
-        <h1 className="text-4xl md:text-6xl font-bold font-serif mb-4 text-heading">Get in <span className="text-primary">Touch</span></h1>
+        <h1 className="mb-4 text-4xl font-bold font-serif text-heading md:text-6xl">{copy.titleLead} <span className="text-primary">{copy.titleAccent}</span></h1>
         <p className="text-secondary text-lg font-sans max-w-2xl mx-auto">
-          Whether you have a question about my research, want to discuss a project, or just want to say hi, my inbox is always open.
+          {copy.description}
         </p>
       </div>
 
       <div
-        className="max-w-2xl mx-auto rounded-2xl p-8 shadow-xl"
+        className="mx-auto max-w-2xl rounded-2xl p-8 shadow-xl"
         style={{
-          background: "var(--bg-surface)",
-          border: "1px solid var(--border)",
+          background: "rgba(13, 24, 34, 0.62)",
+          border: "1px solid rgba(150, 220, 218, 0.14)",
+          backdropFilter: "blur(18px)",
         }}
       >
         <div className="flex items-center gap-3 mb-8 pb-6 border-b" style={{ borderColor: "var(--border)" }}>
           <Mail className="w-6 h-6 text-primary" />
-          <h2 className="text-2xl font-bold font-serif text-heading">Send a Message</h2>
+          <h2 className="text-2xl font-bold font-serif text-heading">{copy.formTitle}</h2>
         </div>
 
         {status === "success" ? (
           <div className="bg-primary/10 border border-primary/30 text-primary p-6 rounded-xl text-center">
-            <h3 className="text-xl font-bold mb-2">Message Sent Successfully!</h3>
-            <p>Thanks for reaching out. I'll get back to you as soon as possible.</p>
+            <h3 className="mb-2 text-xl font-bold">{copy.successTitle}</h3>
+            <p>{copy.successDescription}</p>
             <button 
               onClick={() => setStatus("idle")}
               className="mt-6 px-6 py-2 bg-primary/20 hover:bg-primary/30 rounded-lg transition-colors font-mono text-sm"
             >
-              Send Another Message
+              {copy.sendAnother}
             </button>
           </div>
         ) : (
           <form onSubmit={handleSubmit} className="space-y-6">
             <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
               <div className="space-y-2">
-                <label htmlFor="name" className="text-sm font-bold font-mono" style={{ color: "var(--text-heading)" }}>Name</label>
+                <label htmlFor="name" className="text-sm font-bold font-mono" style={{ color: "var(--text-heading)" }}>{copy.name}</label>
                 <input
                   type="text"
                   id="name"
@@ -82,11 +87,11 @@ export default function Contact() {
                     border: "1px solid var(--border)",
                     color: "var(--text-heading)",
                   }}
-                  placeholder="Ada Lovelace"
+                  placeholder={copy.namePlaceholder}
                 />
               </div>
               <div className="space-y-2">
-                <label htmlFor="email" className="text-sm font-bold font-mono" style={{ color: "var(--text-heading)" }}>Email</label>
+                <label htmlFor="email" className="text-sm font-bold font-mono" style={{ color: "var(--text-heading)" }}>{copy.email}</label>
                 <input
                   type="email"
                   id="email"
@@ -99,13 +104,13 @@ export default function Contact() {
                     border: "1px solid var(--border)",
                     color: "var(--text-heading)",
                   }}
-                  placeholder="ada@example.com"
+                  placeholder={copy.emailPlaceholder}
                 />
               </div>
             </div>
 
             <div className="space-y-2">
-              <label htmlFor="message" className="text-sm font-bold font-mono" style={{ color: "var(--text-heading)" }}>Message</label>
+              <label htmlFor="message" className="text-sm font-bold font-mono" style={{ color: "var(--text-heading)" }}>{copy.message}</label>
               <textarea
                 id="message"
                 required
@@ -118,7 +123,7 @@ export default function Contact() {
                   border: "1px solid var(--border)",
                   color: "var(--text-heading)",
                 }}
-                placeholder="What would you like to discuss?"
+                placeholder={copy.messagePlaceholder}
               ></textarea>
             </div>
 
@@ -143,17 +148,18 @@ export default function Contact() {
             >
               {status === "loading" ? (
                 <>
-                  <Loader2 className="w-5 h-5 mr-2 animate-spin" /> Sending...
+                  <Loader2 className="mr-2 h-5 w-5 animate-spin" /> {copy.sending}
                 </>
               ) : (
                 <>
-                  Send Message <Send className="w-5 h-5 ml-2" />
+                  {copy.send} <Send className="ml-2 h-5 w-5" />
                 </>
               )}
             </button>
           </form>
         )}
       </div>
-    </div>
+      </div>
+    </main>
   );
 }

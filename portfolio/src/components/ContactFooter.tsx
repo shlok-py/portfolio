@@ -2,15 +2,18 @@
 
 import { Mail } from "lucide-react";
 import { GithubIcon, LinkedinIcon } from "./icons";
+import messages from "@/i18n/en.json";
 
 export function ContactFooter() {
+  const copy = messages.footer;
+
   return (
     <footer id="contact" className="py-12 mt-20 border-t border-secondary/10">
       <div className="flex flex-col md:flex-row justify-between items-center gap-6">
         <div className="flex flex-col items-center md:items-start">
-          <h2 className="text-2xl font-bold font-serif mb-2 text-heading">Ready to architect the future?</h2>
+          <h2 className="mb-2 text-2xl font-bold font-serif text-heading">{copy.heading}</h2>
           <p className="text-secondary text-sm max-w-md text-center md:text-left">
-            Available for advanced engineering roles and technical collaborations starting late 2026/2027.
+            {copy.description}
           </p>
         </div>
         
@@ -28,7 +31,7 @@ export function ContactFooter() {
       </div>
       
       <div className="mt-12 text-center text-xs text-secondary/50 font-mono">
-        <p>&copy; {new Date().getFullYear()} AI Engineer Portfolio. Designed & Architected for Production.</p>
+        <p>&copy; {new Date().getFullYear()} {copy.copyright}</p>
       </div>
     </footer>
   );

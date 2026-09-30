@@ -17,14 +17,15 @@ export function SiteChrome({ children }: { children: React.ReactNode }) {
         : null;
   const isDevMode = mode === "dev";
   const hasModeSwitcher = mode !== null;
+  const isLanding = pathname === "/" && mode === null;
 
   return (
     <>
       <ModeSwitcher mode={mode} />
-      {!isDevMode && <Navbar hasModeSwitcher={hasModeSwitcher} />}
+      {!isDevMode && !isLanding && <Navbar hasModeSwitcher={hasModeSwitcher} />}
       <div
         className={`${isDevMode ? "h-screen overflow-hidden" : "min-h-0 flex-1"} ${
-          isDevMode ? "pt-[28px]" : hasModeSwitcher ? "pt-[108px]" : "pt-[80px]"
+          isDevMode ? "pt-[28px]" : hasModeSwitcher ? "pt-[108px]" : isLanding ? "pt-0" : "pt-[80px]"
         }`}
       >
         {children}

@@ -3,6 +3,8 @@
 import { useState, useRef, useEffect } from "react";
 import { motion } from "framer-motion";
 import { Terminal } from "lucide-react";
+import messages from "@/i18n/en.json";
+import { formatMessage } from "@/lib/i18n";
 
 interface CommandOutput {
   command: string;
@@ -10,6 +12,7 @@ interface CommandOutput {
 }
 
 export function TerminalConsole({ fullScreen = false }: { fullScreen?: boolean }) {
+  const copy = messages.terminal;
   const [input, setInput] = useState("");
   const [history, setHistory] = useState<CommandOutput[]>([]);
   const bottomRef = useRef<HTMLDivElement>(null);
@@ -17,31 +20,31 @@ export function TerminalConsole({ fullScreen = false }: { fullScreen?: boolean }
   const commands: Record<string, React.ReactNode> = {
     help: (
       <div className="text-secondary">
-        <p>Available commands:</p>
+        <p>{copy.available}</p>
         <ul className="list-none ml-2 mt-2 space-y-1">
-          <li><span className="text-primary w-20 inline-block">skills</span> - Display technical skills</li>
-          <li><span className="text-primary w-20 inline-block">contact</span> - Show contact information</li>
-          <li><span className="text-primary w-20 inline-block">blogs</span> - Open Medium in a new tab</li>
-          <li><span className="text-primary w-20 inline-block">clear</span> - Clear the terminal output</li>
+          <li><span className="text-primary w-20 inline-block">{copy.commandNames.skills}</span> - {copy.commands.skills}</li>
+          <li><span className="text-primary w-20 inline-block">{copy.commandNames.contact}</span> - {copy.commands.contact}</li>
+          <li><span className="text-primary w-20 inline-block">{copy.commandNames.writing}</span> - {copy.commands.writing}</li>
+          <li><span className="text-primary w-20 inline-block">{copy.commandNames.clear}</span> - {copy.commands.clear}</li>
         </ul>
       </div>
     ),
     skills: (
       <div className="text-secondary mt-2 space-y-2">
-        <p><span className="text-primary font-bold">AI/ML:</span> PyTorch, RAG, Multi-Agent Systems, LangChain, Fine-tuning</p>
-        <p><span className="text-primary font-bold">Backend:</span> FastAPI, Python, Node.js, Next.js</p>
-        <p><span className="text-primary font-bold">Cloud/DevOps:</span> Azure App Services, Docker, CI/CD, LLMOps Pipelines</p>
-        <p><span className="text-primary font-bold">CV, NLP & LLMs:</span> Computer Vision, Recommendation Systems, NLP Pipelines, Embeddings, LLM Evaluation</p>
+        <p><span className="text-primary font-bold">{copy.skills.ai}:</span> {copy.skills.aiValue}</p>
+        <p><span className="text-primary font-bold">{copy.skills.backend}:</span> {copy.skills.backendValue}</p>
+        <p><span className="text-primary font-bold">{copy.skills.cloud}:</span> {copy.skills.cloudValue}</p>
+        <p><span className="text-primary font-bold">{copy.skills.vision}:</span> {copy.skills.visionValue}</p>
       </div>
     ),
     contact: (
       <div className="text-secondary mt-2 space-y-1">
-        <p>Email: <a href="mailto:shlokkoirala19@gmail.com" className="text-primary hover:underline">shlokkoirala19@gmail.com</a></p>
-        <p>LinkedIn: <a href="https://www.linkedin.com/in/shlok-koirala-2aabb51b6/" target="_blank" rel="noreferrer" className="text-primary hover:underline">linkedin.com/in/shlok-koirala</a></p>
-        <p>GitHub: <a href="https://github.com/shlok-py" target="_blank" rel="noreferrer" className="text-primary hover:underline">github.com/shlok-py</a></p>
+        <p>{copy.contact.email}: <a href="mailto:shlokkoirala19@gmail.com" className="text-primary hover:underline">shlokkoirala19@gmail.com</a></p>
+        <p>{copy.contact.linkedin}: <a href="https://www.linkedin.com/in/shlok-koirala-2aabb51b6/" target="_blank" rel="noreferrer" className="text-primary hover:underline">linkedin.com/in/shlok-koirala</a></p>
+        <p>{copy.contact.github}: <a href="https://github.com/shlok-py" target="_blank" rel="noreferrer" className="text-primary hover:underline">github.com/shlok-py</a></p>
       </div>
     ),
-    blogs: <span className="text-secondary mt-2 block">Opening Medium in a new tab...</span>,
+    writing: <span className="text-secondary mt-2 block">{copy.writingOpened}</span>,
   };
 
   const handleCommand = (e: React.KeyboardEvent<HTMLInputElement>) => {
@@ -52,11 +55,11 @@ export function TerminalConsole({ fullScreen = false }: { fullScreen?: boolean }
       if (cmd === "clear") {
         setHistory([]);
       } else {
-        if (cmd === "blogs") {
+        if (cmd === "writing") {
           window.open("https://medium.com/@shlokkoirala19", "_blank", "noopener,noreferrer");
         }
         const output = commands[cmd] || (
-          <span className="text-red-400 mt-2 block">Command not found: {cmd}. Type 'help' for a list of commands.</span>
+          <span className="text-red-400 mt-2 block">{formatMessage(copy.notFound, { command: cmd })}</span>
         );
         setHistory([...history, { command: cmd, output }]);
       }
@@ -83,12 +86,12 @@ export function TerminalConsole({ fullScreen = false }: { fullScreen?: boolean }
           <div className="w-3 h-3 rounded-full bg-green-500/80"></div>
         </div>
         <Terminal className="w-4 h-4 text-primary mr-2" />
-        <span className="text-xs text-secondary">visitor@research-console:~</span>
+        <span className="text-xs text-secondary">{copy.title}</span>
       </div>
       <div className={fullScreen ? "min-h-0 flex-1 overflow-y-auto p-4 text-sm sm:text-base scrollbar-thin scrollbar-thumb-primary/20 scrollbar-track-transparent" : "p-4 h-80 overflow-y-auto text-sm sm:text-base scrollbar-thin scrollbar-thumb-primary/20 scrollbar-track-transparent"} style={{ overflowAnchor: "none" }}>
         <div className="text-secondary mb-4">
-          <p>Welcome to the interactive system console v1.0.0</p>
-          <p>Type <span className="text-primary">'help'</span> to see available commands.</p>
+            <p>{copy.welcome}</p>
+            <p>{copy.promptHint} <span className="text-primary">{copy.commandNames.help}</span> to inspect available commands.</p>
         </div>
 
         {history.map((entry, i) => (

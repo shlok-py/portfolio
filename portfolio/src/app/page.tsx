@@ -2,16 +2,24 @@
 
 import { Suspense } from "react";
 import { useRouter, useSearchParams } from "next/navigation";
+import { useState } from "react";
+import { motion } from "framer-motion";
+import { ArrowRight, Eye, Terminal } from "lucide-react";
 import { HeroSection } from "@/components/HeroSection";
 import { CoreDomains } from "@/components/CoreDomains";
 import { TerminalConsole } from "@/components/TerminalConsole";
 import { ContactFooter } from "@/components/ContactFooter";
+import { HighImpactProjects } from "@/components/HighImpactProjects";
+import { ExperienceTour } from "@/components/ExperienceTour";
+import messages from "@/i18n/en.json";
 
 type Mode = "landing" | "dev" | "user";
 
 function HomeContent() {
+  const copy = messages.landing;
   const router = useRouter();
   const searchParams = useSearchParams();
+  const [isTransitioning, setIsTransitioning] = useState(false);
   const modeParam = searchParams.get("mode");
   const mode: Mode = modeParam === "dev" ? "dev" : modeParam === "user" ? "user" : "landing";
 
@@ -28,45 +36,82 @@ function HomeContent() {
     router.replace(`/?${params.toString()}`);
   };
 
+  const beginModeTransition = (nextMode: Mode) => {
+    setIsTransitioning(true);
+    window.setTimeout(() => setMode(nextMode), 900);
+  };
+
   if (mode === "landing") {
     return (
-      <main className="flex min-h-screen items-center justify-center px-6" style={{ background: "var(--bg)" }}>
-        <div className="flex -translate-y-12 flex-col gap-2 sm:flex-row sm:justify-center">
+      <motion.main
+        className="relative isolate flex min-h-screen items-center justify-center overflow-hidden px-6 py-16"
+        style={{
+          background:
+            "radial-gradient(circle at 50% 42%, rgba(24, 83, 91, 0.2), transparent 32%), radial-gradient(circle at 8% 90%, rgba(93, 38, 73, 0.16), transparent 28%), #050811",
+        }}
+      >
+        <motion.div
+          className="pointer-events-none absolute inset-0 opacity-40"
+          animate={{ y: isTransitioning ? -320 : 0, scale: isTransitioning ? 1.14 : 1, opacity: isTransitioning ? 0 : 0.4 }}
+          transition={{ duration: 0.86, ease: [0.22, 1, 0.36, 1] }}
+          style={{ backgroundImage: "linear-gradient(rgba(137, 196, 198, 0.045) 1px, transparent 1px), linear-gradient(90deg, rgba(137, 196, 198, 0.045) 1px, transparent 1px)", backgroundSize: "72px 72px", maskImage: "linear-gradient(to bottom, transparent, black 25%, black 75%, transparent)" }}
+        />
+        <motion.div
+          className="pointer-events-none absolute left-1/2 top-1/2 h-[34rem] w-[34rem] -translate-x-1/2 -translate-y-1/2 rounded-full border border-white/[0.04] shadow-[0_0_140px_rgba(65,155,157,0.1)]"
+          animate={{ scale: isTransitioning ? 1.85 : 1, rotate: isTransitioning ? 18 : 0, opacity: isTransitioning ? 0 : 1 }}
+          transition={{ duration: 0.86, ease: "easeIn" }}
+        />
+        <motion.div
+          className="relative z-10 w-full max-w-3xl text-center"
+          animate={{ y: isTransitioning ? -130 : 0, scale: isTransitioning ? 0.82 : 1, opacity: isTransitioning ? 0 : 1 }}
+          transition={{ duration: 0.7, ease: [0.22, 1, 0.36, 1] }}
+        >
+          <div className="mx-auto mb-7 flex h-14 w-14 items-center justify-center rounded-2xl border border-cyan-100/15 bg-white/[0.07] text-cyan-200/80 shadow-[inset_0_1px_0_rgba(255,255,255,0.14),0_18px_60px_rgba(0,0,0,0.32)] backdrop-blur-xl">
+            <Eye size={23} strokeWidth={1.4} />
+          </div>
+          <p className="mb-5 font-mono text-[10px] uppercase tracking-[0.38em] text-cyan-200/55">{copy.signal}</p>
+          <h1 className="mx-auto max-w-2xl font-serif text-5xl font-medium leading-[0.98] tracking-tight text-slate-100 sm:text-7xl">
+            {copy.titleLead} <span className="text-cyan-200/80">{copy.titleAccent}</span>
+          </h1>
+          <p className="mx-auto mt-7 max-w-md text-sm leading-7 text-slate-400/75">
+            {copy.description}
+          </p>
+          <div className="mx-auto mt-11 grid max-w-lg gap-3 sm:grid-cols-2">
           <button
             type="button"
-            onClick={() => setMode("dev")}
-            className="px-5 py-2.5 text-sm font-medium transition-all"
+            onClick={() => beginModeTransition("dev")}
+            className="group rounded-2xl border border-cyan-100/15 bg-white/[0.09] px-5 py-4 text-left shadow-[inset_0_1px_0_rgba(255,255,255,0.12),0_18px_45px_rgba(0,0,0,0.2)] backdrop-blur-xl transition-all hover:-translate-y-1 hover:border-cyan-200/35 hover:bg-white/[0.14]"
             style={{
-              background: "rgba(255, 255, 255, 0.12)",
-              color: "var(--text-heading)",
-              border: "1px solid rgba(255, 255, 255, 0.18)",
-              borderRadius: "10px",
-              boxShadow: "0 12px 30px rgba(0,0,0,0.12), inset 0 1px 0 rgba(255,255,255,0.25)",
-              backdropFilter: "blur(16px)",
-              WebkitBackdropFilter: "blur(16px)",
+              color: "#e2f7f6",
             }}
           >
-            Dev mode
+            <span className="mb-3 flex items-center justify-between text-cyan-200/70"><Terminal size={16} strokeWidth={1.5} /><ArrowRight size={15} className="transition-transform group-hover:translate-x-1" /></span>
+            <span className="block font-mono text-xs uppercase tracking-[0.18em]">{copy.devMode}</span>
+            <span className="mt-1 block text-xs text-slate-400/65">{copy.devDetail}</span>
           </button>
 
           <button
             type="button"
-            onClick={() => setMode("user")}
-            className="px-5 py-2.5 text-sm font-medium transition-all"
+            onClick={() => beginModeTransition("user")}
+            className="group rounded-2xl border border-fuchsia-100/10 bg-white/[0.06] px-5 py-4 text-left shadow-[inset_0_1px_0_rgba(255,255,255,0.1),0_18px_45px_rgba(0,0,0,0.2)] backdrop-blur-xl transition-all hover:-translate-y-1 hover:border-fuchsia-200/25 hover:bg-white/[0.11]"
             style={{
-              background: "rgba(255, 255, 255, 0.10)",
-              color: "var(--text-heading)",
-              border: "1px solid rgba(255, 255, 255, 0.16)",
-              borderRadius: "10px",
-              boxShadow: "0 12px 30px rgba(0,0,0,0.10), inset 0 1px 0 rgba(255,255,255,0.2)",
-              backdropFilter: "blur(16px)",
-              WebkitBackdropFilter: "blur(16px)",
+              color: "#f2e9f3",
             }}
           >
-            User mode
+            <span className="mb-3 flex items-center justify-between text-fuchsia-200/60"><Eye size={16} strokeWidth={1.5} /><ArrowRight size={15} className="transition-transform group-hover:translate-x-1" /></span>
+            <span className="block font-mono text-xs uppercase tracking-[0.18em]">{copy.userMode}</span>
+            <span className="mt-1 block text-xs text-slate-400/65">{copy.userDetail}</span>
           </button>
         </div>
-      </main>
+          <p className="mt-9 font-mono text-[9px] uppercase tracking-[0.28em] text-slate-500/55">{copy.choose}</p>
+        </motion.div>
+        <motion.div
+          className="pointer-events-none absolute inset-0 z-20 bg-[#050811]"
+          initial={{ opacity: 0 }}
+          animate={{ opacity: isTransitioning ? 0.94 : 0 }}
+          transition={{ duration: 0.82, ease: "easeInOut" }}
+        />
+      </motion.main>
     );
   }
 
@@ -84,6 +129,8 @@ function HomeContent() {
     <main className="max-w-7xl mx-auto px-6 sm:px-12 lg:px-24 overflow-x-hidden" style={{ background: "var(--bg)" }}>
       <HeroSection />
       <CoreDomains />
+      <ExperienceTour />
+      <HighImpactProjects />
       <ContactFooter />
     </main>
   );

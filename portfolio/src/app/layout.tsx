@@ -3,6 +3,7 @@ import type { Metadata } from "next";
 import { Inter, Playfair_Display, JetBrains_Mono } from "next/font/google";
 import { SiteChrome } from "@/components/SiteChrome";
 import { ThemeProvider } from "@/components/ThemeProvider";
+import messages from "@/i18n/en.json";
 import "./globals.css";
 
 const inter = Inter({
@@ -21,8 +22,8 @@ const jetbrainsMono = JetBrains_Mono({
 });
 
 export const metadata: Metadata = {
-  title: "AI Engineer Portfolio",
-  description: "Architecting Production-Grade AI Systems & Multi-Agent Pipelines",
+  title: messages.meta.title,
+  description: messages.meta.description,
 };
 
 export default function RootLayout({
