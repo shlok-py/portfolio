@@ -17,6 +17,7 @@ export function Navbar({ hasModeSwitcher = false }: { hasModeSwitcher?: boolean 
   const modeQuery = hasModeSwitcher ? "?mode=user" : "";
   const links = [
     { name: copy.home, href: `/${modeQuery}`, external: false },
+    { name: copy.lab, href: `/lab/rag${modeQuery}`, external: false },
     { name: copy.blog, href: MEDIUM_URL, external: true },
     { name: copy.contact, href: `/contact${modeQuery}`, external: false },
   ];

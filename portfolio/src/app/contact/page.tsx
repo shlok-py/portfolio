@@ -36,8 +36,8 @@ export default function Contact() {
   };
 
   return (
-    <main className="relative min-h-screen overflow-hidden px-6 py-20" style={{ background: "radial-gradient(circle at 70% 20%, rgba(74, 38, 82, 0.18), transparent 34%), radial-gradient(circle at 20% 70%, rgba(24, 83, 91, 0.16), transparent 34%), #050811" }}>
-      <div className="pointer-events-none absolute inset-0 opacity-30" style={{ backgroundImage: "linear-gradient(rgba(137, 196, 198, 0.045) 1px, transparent 1px), linear-gradient(90deg, rgba(137, 196, 198, 0.045) 1px, transparent 1px)", backgroundSize: "72px 72px" }} />
+    <main className="relative min-h-screen overflow-hidden px-6 py-20" style={{ background: "var(--page-glow), var(--page-bg)" }}>
+      <div className="pointer-events-none absolute inset-0 opacity-30" style={{ backgroundImage: "linear-gradient(var(--page-grid) 1px, transparent 1px), linear-gradient(90deg, var(--page-grid) 1px, transparent 1px)", backgroundSize: "72px 72px" }} />
       <div className="relative mx-auto max-w-4xl">
       <div className="mb-16 text-center">
         <h1 className="mb-4 text-4xl font-bold font-serif text-heading md:text-6xl">{copy.titleLead} <span className="text-primary">{copy.titleAccent}</span></h1>
@@ -49,8 +49,8 @@ export default function Contact() {
       <div
         className="mx-auto max-w-2xl rounded-2xl p-8 shadow-xl"
         style={{
-          background: "rgba(13, 24, 34, 0.62)",
-          border: "1px solid rgba(150, 220, 218, 0.14)",
+          background: "var(--glass-bg)",
+          border: "1px solid var(--glass-border)",
           backdropFilter: "blur(18px)",
         }}
       >

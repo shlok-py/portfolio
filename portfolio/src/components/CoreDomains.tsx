@@ -34,7 +34,7 @@ export function CoreDomains() {
               viewport={{ once: true }}
               transition={{ delay: (index + 1) * 0.1, duration: 0.5 }}
               className="group p-8 rounded-xl border hover:border-primary/50 transition-all hover:-translate-y-1 relative overflow-hidden"
-              style={{ background: "rgba(13, 24, 34, 0.58)", borderColor: "rgba(150, 220, 218, 0.14)", backdropFilter: "blur(18px)" }}
+              style={{ background: "var(--glass-bg-soft)", borderColor: "var(--glass-border)", backdropFilter: "blur(18px)" }}
             >
               <div className="absolute top-0 right-0 w-32 h-32 bg-primary/5 rounded-bl-full -z-10 group-hover:bg-primary/10 transition-colors"></div>
               

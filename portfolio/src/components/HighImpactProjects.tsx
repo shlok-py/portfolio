@@ -48,7 +48,7 @@ export function HighImpactProjects() {
               <p className="mb-2 font-mono text-sm text-primary">{project.type}</p>
               <h3 className="text-2xl md:text-3xl font-bold text-heading mb-4 font-serif group-hover:text-primary transition-colors">{project.title}</h3>
               
-              <div className="relative z-10 mb-6 rounded-xl p-6 shadow-xl transition-colors group-hover:border-primary/30" style={{ background: "rgba(13, 24, 34, 0.58)", border: "1px solid rgba(150, 220, 218, 0.14)", backdropFilter: "blur(18px)" }}>
+              <div className="relative z-10 mb-6 rounded-xl p-6 shadow-xl transition-colors group-hover:border-primary/30" style={{ background: "var(--glass-bg)", border: "1px solid var(--glass-border)", backdropFilter: "blur(18px)" }}>
                 <p className="text-secondary leading-relaxed">{project.description}</p>
                 
                 <div className="mt-4 pt-4 border-t border-secondary/10">
@@ -86,7 +86,7 @@ export function HighImpactProjects() {
             </div>
 
             {/* Visual/Abstract Representation */}
-            <div className="relative flex h-64 min-h-[300px] items-center justify-center overflow-hidden rounded-xl lg:col-span-5 lg:h-full group-hover:border-primary/30 transition-colors" style={{ background: "rgba(13, 24, 34, 0.48)", border: "1px solid rgba(150, 220, 218, 0.14)", backdropFilter: "blur(18px)" }}>
+            <div className="relative flex h-64 min-h-[300px] items-center justify-center overflow-hidden rounded-xl lg:col-span-5 lg:h-full group-hover:border-primary/30 transition-colors" style={{ background: "var(--glass-bg-soft)", border: "1px solid var(--glass-border)", backdropFilter: "blur(18px)" }}>
               <div className="absolute inset-0 bg-cover bg-center opacity-20" style={{ backgroundImage: `url(${project.image})` }} />
               <div className="absolute inset-0 opacity-20 bg-[radial-gradient(circle_at_center,_var(--tw-gradient-stops))] from-primary via-transparent to-transparent"></div>
               {/* Abstract structural representation */}

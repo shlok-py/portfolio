@@ -47,14 +47,14 @@ function HomeContent() {
         className="relative isolate flex min-h-screen items-center justify-center overflow-hidden px-6 py-16"
         style={{
           background:
-            "radial-gradient(circle at 50% 42%, rgba(24, 83, 91, 0.2), transparent 32%), radial-gradient(circle at 8% 90%, rgba(93, 38, 73, 0.16), transparent 28%), #050811",
+            "var(--page-glow), var(--page-bg)",
         }}
       >
         <motion.div
           className="pointer-events-none absolute inset-0 opacity-40"
           animate={{ y: isTransitioning ? -320 : 0, scale: isTransitioning ? 1.14 : 1, opacity: isTransitioning ? 0 : 0.4 }}
           transition={{ duration: 0.86, ease: [0.22, 1, 0.36, 1] }}
-          style={{ backgroundImage: "linear-gradient(rgba(137, 196, 198, 0.045) 1px, transparent 1px), linear-gradient(90deg, rgba(137, 196, 198, 0.045) 1px, transparent 1px)", backgroundSize: "72px 72px", maskImage: "linear-gradient(to bottom, transparent, black 25%, black 75%, transparent)" }}
+          style={{ backgroundImage: "linear-gradient(var(--page-grid) 1px, transparent 1px), linear-gradient(90deg, var(--page-grid) 1px, transparent 1px)", backgroundSize: "72px 72px", maskImage: "linear-gradient(to bottom, transparent, black 25%, black 75%, transparent)" }}
         />
         <motion.div
           className="pointer-events-none absolute left-1/2 top-1/2 h-[34rem] w-[34rem] -translate-x-1/2 -translate-y-1/2 rounded-full border border-white/[0.04] shadow-[0_0_140px_rgba(65,155,157,0.1)]"
@@ -70,19 +70,19 @@ function HomeContent() {
             <Eye size={23} strokeWidth={1.4} />
           </div>
           <p className="mb-5 font-mono text-[10px] uppercase tracking-[0.38em] text-cyan-200/55">{copy.signal}</p>
-          <h1 className="mx-auto max-w-2xl font-serif text-5xl font-medium leading-[0.98] tracking-tight text-slate-100 sm:text-7xl">
-            {copy.titleLead} <span className="text-cyan-200/80">{copy.titleAccent}</span>
+          <h1 className="mx-auto max-w-2xl font-serif text-5xl font-medium leading-[0.98] tracking-tight sm:text-7xl" style={{ color: "var(--text-heading)" }}>
+            {copy.titleLead} <span style={{ color: "var(--text-primary)" }}>{copy.titleAccent}</span>
           </h1>
-          <p className="mx-auto mt-7 max-w-md text-sm leading-7 text-slate-400/75">
+          <p className="mx-auto mt-7 max-w-md text-sm leading-7" style={{ color: "var(--text-body)" }}>
             {copy.description}
           </p>
           <div className="mx-auto mt-11 grid max-w-lg gap-3 sm:grid-cols-2">
           <button
             type="button"
             onClick={() => beginModeTransition("dev")}
-            className="group rounded-2xl border border-cyan-100/15 bg-white/[0.09] px-5 py-4 text-left shadow-[inset_0_1px_0_rgba(255,255,255,0.12),0_18px_45px_rgba(0,0,0,0.2)] backdrop-blur-xl transition-all hover:-translate-y-1 hover:border-cyan-200/35 hover:bg-white/[0.14]"
+            className="group rounded-2xl border px-5 py-4 text-left backdrop-blur-xl transition-all hover:-translate-y-1"
             style={{
-              color: "#e2f7f6",
+              color: "var(--text-heading)", background: "var(--glass-control)", borderColor: "var(--glass-border)", boxShadow: "0 18px 45px rgba(0,0,0,0.2), inset 0 1px 0 var(--glass-control-active)",
             }}
           >
             <span className="mb-3 flex items-center justify-between text-cyan-200/70"><Terminal size={16} strokeWidth={1.5} /><ArrowRight size={15} className="transition-transform group-hover:translate-x-1" /></span>
@@ -93,9 +93,9 @@ function HomeContent() {
           <button
             type="button"
             onClick={() => beginModeTransition("user")}
-            className="group rounded-2xl border border-fuchsia-100/10 bg-white/[0.06] px-5 py-4 text-left shadow-[inset_0_1px_0_rgba(255,255,255,0.1),0_18px_45px_rgba(0,0,0,0.2)] backdrop-blur-xl transition-all hover:-translate-y-1 hover:border-fuchsia-200/25 hover:bg-white/[0.11]"
+            className="group rounded-2xl border px-5 py-4 text-left backdrop-blur-xl transition-all hover:-translate-y-1"
             style={{
-              color: "#f2e9f3",
+              color: "var(--text-heading)", background: "var(--glass-control)", borderColor: "var(--glass-border)", boxShadow: "0 18px 45px rgba(0,0,0,0.2), inset 0 1px 0 var(--glass-control-active)",
             }}
           >
             <span className="mb-3 flex items-center justify-between text-fuchsia-200/60"><Eye size={16} strokeWidth={1.5} /><ArrowRight size={15} className="transition-transform group-hover:translate-x-1" /></span>
@@ -106,7 +106,8 @@ function HomeContent() {
           <p className="mt-9 font-mono text-[9px] uppercase tracking-[0.28em] text-slate-500/55">{copy.choose}</p>
         </motion.div>
         <motion.div
-          className="pointer-events-none absolute inset-0 z-20 bg-[#050811]"
+          className="pointer-events-none absolute inset-0 z-20"
+          style={{ background: "var(--veil-bg)" }}
           initial={{ opacity: 0 }}
           animate={{ opacity: isTransitioning ? 0.94 : 0 }}
           transition={{ duration: 0.82, ease: "easeInOut" }}

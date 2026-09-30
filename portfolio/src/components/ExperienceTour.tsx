@@ -47,7 +47,7 @@ export function ExperienceTour() {
           exit={{ opacity: 0, x: -24 }}
           transition={{ duration: 0.28 }}
           className="relative min-h-[430px] overflow-hidden rounded-2xl border p-6 shadow-2xl shadow-black/20 sm:p-10 lg:h-[390px] lg:min-h-0"
-          style={{ background: "rgba(13, 24, 34, 0.62)", borderColor: "rgba(150, 220, 218, 0.14)", backdropFilter: "blur(18px)" }}
+          style={{ background: "var(--glass-bg)", borderColor: "var(--glass-border)", backdropFilter: "blur(18px)" }}
         >
           <div className="absolute right-0 top-0 h-48 w-48 rounded-full bg-primary/[0.08] blur-3xl" />
           <div className="relative grid gap-8 lg:grid-cols-[0.8fr_1.2fr]">

@@ -1,6 +1,7 @@
 "use client";
 
 import { useRouter, useSearchParams } from "next/navigation";
+import { useEffect, useState } from "react";
 import { Moon, Sun } from "lucide-react";
 import { useTheme } from "@/components/ThemeProvider";
 import messages from "@/i18n/en.json";
@@ -11,9 +12,15 @@ export function ModeSwitcher({ mode: forcedMode }: { mode?: Mode | null }) {
   const router = useRouter();
   const searchParams = useSearchParams();
   const { theme, toggleTheme } = useTheme();
+  const [mounted, setMounted] = useState(false);
   const modeParam = searchParams.get("mode");
   const mode: Mode | null = forcedMode ?? (modeParam === "dev" || modeParam === "user" ? modeParam : null);
   const copy = messages.navigation;
+
+  useEffect(() => {
+    const frame = window.requestAnimationFrame(() => setMounted(true));
+    return () => window.cancelAnimationFrame(frame);
+  }, []);
 
   if (!mode) {
     return null;
@@ -38,7 +45,7 @@ export function ModeSwitcher({ mode: forcedMode }: { mode?: Mode | null }) {
           className="flex items-center gap-1 rounded-full border px-1 py-0.5"
           style={{
             borderColor: "var(--mode-switcher-border)",
-            background: "rgba(255,255,255,0.28)",
+            background: "var(--glass-control)",
           }}
         >
           <button
@@ -46,7 +53,7 @@ export function ModeSwitcher({ mode: forcedMode }: { mode?: Mode | null }) {
             onClick={() => setMode("dev")}
             className="rounded-full px-2 py-0.5 text-[9px] font-medium leading-none transition-all"
             style={{
-              background: mode === "dev" ? "rgba(255,255,255,0.58)" : "transparent",
+              background: mode === "dev" ? "var(--glass-control-active)" : "transparent",
               color: "var(--mode-switcher-text)",
               boxShadow: mode === "dev" ? "inset 0 0 0 1px var(--mode-switcher-border)" : "none",
             }}
@@ -58,7 +65,7 @@ export function ModeSwitcher({ mode: forcedMode }: { mode?: Mode | null }) {
             onClick={() => setMode("user")}
             className="rounded-full px-2 py-0.5 text-[9px] font-medium leading-none transition-all"
             style={{
-              background: mode === "user" ? "rgba(255,255,255,0.58)" : "transparent",
+              background: mode === "user" ? "var(--glass-control-active)" : "transparent",
               color: "var(--mode-switcher-text)",
               boxShadow: mode === "user" ? "inset 0 0 0 1px var(--mode-switcher-border)" : "none",
             }}
@@ -69,16 +76,16 @@ export function ModeSwitcher({ mode: forcedMode }: { mode?: Mode | null }) {
         <button
           type="button"
           onClick={toggleTheme}
-          aria-label={theme === "dark" ? copy.switchToLight : copy.switchToDark}
-          title={theme === "dark" ? copy.switchToLight : copy.switchToDark}
+          aria-label={!mounted || theme === "dark" ? copy.switchToLight : copy.switchToDark}
+          title={!mounted || theme === "dark" ? copy.switchToLight : copy.switchToDark}
           className="flex h-5 w-7 items-center justify-center rounded-full border transition-colors"
           style={{
             borderColor: "var(--mode-switcher-border)",
             color: "var(--mode-switcher-text)",
-            background: "rgba(255,255,255,0.28)",
+            background: "var(--glass-control)",
           }}
         >
-          {theme === "dark" ? <Sun size={11} /> : <Moon size={11} />}
+          {!mounted || theme === "dark" ? <Sun size={11} /> : <Moon size={11} />}
         </button>
       </div>
     </div>
